@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApplication"
+        tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="ucbapp"
+            android:theme="@style/Theme.MyApplication">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+            <!-- Required: set your sentry.io project identifier (DSN) -->
+            <meta-data android:name="io.sentry.dsn" android:value="https://1220ffc846cae7becc37d834aeb0f684@o4507825193615360.ingest.us.sentry.io/4507829520236545" />
+
+            <!-- enable automatic breadcrumbs for user interactions (clicks, swipes, scrolls) -->
+            <meta-data android:name="io.sentry.traces.user-interaction.enable" android:value="true" />
+            <!-- enable screenshot for crashes -->
+            <meta-data android:name="io.sentry.attach-screenshot" android:value="true" />
+            <!-- enable view hierarchy for crashes -->
+            <meta-data android:name="io.sentry.attach-view-hierarchy" android:value="true" />
+
+            <!-- enable the performance API by setting a sample-rate, adjust in production env -->
+            <meta-data android:name="io.sentry.traces.sample-rate" android:value="1.0" />
+            <!-- enable profiling when starting transactions, adjust in production env -->
+            <meta-data android:name="io.sentry.traces.profiling.sample-rate" android:value="1.0" />
+
+
+    </application>
+
+</manifest>
