@@ -1,9 +1,13 @@
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kapt)
     alias(libs.plugins.hilt)
     alias(libs.plugins.sentry)
+    alias(libs.plugins.ktlint)
+    alias(libs.plugins.detetkt)
 }
 
 android {
@@ -28,7 +32,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -56,10 +60,10 @@ dependencies {
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
-    //For instrumentation test
+    // For instrumentation test
     androidTestImplementation(libs.hilt.test)
     kaptAndroidTest(libs.hilt.compiler)
-    //For local unit tests
+    // For local unit tests
     testImplementation(libs.hilt.test)
     kaptTest(libs.hilt.compiler)
 
@@ -81,15 +85,33 @@ dependencies {
 
     implementation(libs.myretrofit)
     implementation(libs.myglide)
-
+    implementation(libs.androidx.ui.font)
 }
 
-kapt{
+kapt {
     correctErrorTypes = true
 }
 
-
-
+ktlint {
+    android = true
+    outputColorName = "RED"
+    verbose = true
+    ignoreFailures = true
+    enableExperimentalRules = true
+    baseline = file("$projectDir/config/ktlint/baseline.xml")
+    reporters {
+        reporter(reporterType = ReporterType.PLAIN)
+        reporter(ReporterType.CHECKSTYLE)
+        reporter(ReporterType.SARIF)
+    }
+    kotlinScriptAdditionalPaths {
+        include(fileTree("scripts/"))
+    }
+    filter {
+        exclude("**/generated/**")
+        include("**/kotlin/**")
+    }
+}
 
 sentry {
     org.set("ucb-q0")
@@ -98,4 +120,8 @@ sentry {
     // this will upload your source code to Sentry to show it as part of the stack traces
     // disable if you don't want to expose your sources
     includeSourceContext.set(true)
+}
+
+detekt {
+    parallel = true
 }

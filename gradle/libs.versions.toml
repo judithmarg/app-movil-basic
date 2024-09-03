@@ -12,6 +12,9 @@ retrofit="2.11.0"
 glide="4.16.0"
 hilt="2.52"
 sentry = "4.11.0"
+ktlint = "12.1.1"
+font="1.6.8"
+detekt = "1.23.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,6 +36,7 @@ myglide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref="hilt"}
 hilt-compiler = { group="com.google.dagger", name="hilt-compiler", version.ref="hilt"}
 hilt-test = { group = "com.google.dagger", name = "hilt-android-testing", version.ref="hilt"}
+androidx-ui-font = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref="font"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -40,3 +44,5 @@ jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = 
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt"}
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref= "kotlin"}
 sentry = { id = "io.sentry.android.gradle", version.ref = "sentry"}
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint"}
+detetkt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt"}
