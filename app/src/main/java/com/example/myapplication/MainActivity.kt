@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -41,7 +42,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             AppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SigninPage()
+                    SignInPage(
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }
@@ -69,15 +72,17 @@ fun Greeting(
 }
 
 @Composable
-fun SigninPage() {
+fun SignInPage(modifier: Modifier) {
     var userSigIn by remember { mutableStateOf("") }
     var passwordSignIn by remember { mutableStateOf("") }
-    Column (
-        modifier = Modifier
+    Column(
+        modifier =
+        Modifier
             .fillMaxSize()
-            .padding(20.dp),
+            .padding(20.dp)
+            .background(Color.LightGray),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(text = "Sign In")
         TextField(
@@ -85,29 +90,58 @@ fun SigninPage() {
                 Text(text = "User")
             },
             singleLine = true,
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Text
-            ),
+            keyboardOptions =
+                KeyboardOptions(
+                    keyboardType = KeyboardType.Text,
+                ),
             placeholder = {
                 Text(text = "placeholder")
             },
             leadingIcon = {
-                Icon(imageVector = ImageVector.vectorResource(R.drawable.ic_launcher_background),
+                Icon(
+                    imageVector = ImageVector.vectorResource(R.drawable.ic_launcher_background),
                     contentDescription = "",
                     tint = Color.Black,
                     modifier = Modifier.size(24.dp),
-                    )
+                )
             },
             modifier = Modifier.fillMaxWidth(),
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color.Transparent,
-                unfocusedContainerColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Black
-            ),
+            colors =
+                TextFieldDefaults.colors(
+                    focusedContainerColor = Color.Transparent,
+                    unfocusedContainerColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Black,
+                ),
             value = userSigIn, onValueChange = {
-            userSigIn = it })
-        TextField(value = passwordSignIn, onValueChange = {
-            passwordSignIn = it })
+                userSigIn = it
+            },
+        )
+        TextField(
+            label = {
+                Text(text = "Password")
+            },
+            singleLine = true,
+            placeholder = {
+                Text(text = "* * * * * * * *")
+            },
+            leadingIcon = {
+                Icon(
+                    imageVector = ImageVector.vectorResource(R.drawable.ic_launcher_foreground),
+                    contentDescription = "",
+                    tint = Color.Magenta,
+                    modifier = Modifier.size(24.dp)
+                )
+            },
+            modifier = Modifier.fillMaxWidth(),
+            colors =
+                TextFieldDefaults.colors(
+                    focusedContainerColor = Color.Transparent,
+                    unfocusedContainerColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Blue,
+                ),
+            value = passwordSignIn, onValueChange = {
+            passwordSignIn = it
+        })
         Button(modifier = Modifier.fillMaxWidth(), onClick = { /*TODO*/ }) {
             Text(text = stringResource(R.string.signin_button))
         }
