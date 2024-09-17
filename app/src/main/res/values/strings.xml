@@ -2,4 +2,7 @@
     <string name="app_name">My Application</string>
     <string name="signin_button">Sign In</string>
     <string name="signin_title">Sign In</string>
+    <string name="title_activity_git_ui">GitUiActivity</string>
+    <string name="github_ui_title">Ingrese el github user</string>
+    <string name="github_ui_button">Buscar</string>
 </resources>

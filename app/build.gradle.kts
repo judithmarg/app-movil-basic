@@ -86,6 +86,8 @@ dependencies {
     implementation(libs.myretrofit)
     implementation(libs.myglide)
     implementation(libs.androidx.ui.font)
+    implementation(libs.coil)
+    implementation(project(":core:network"))
 }
 
 kapt {

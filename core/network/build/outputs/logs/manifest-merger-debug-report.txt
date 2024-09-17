@@ -1,0 +1,20 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\Documents\Semestre 8\Programacion de dispositivos moviles\Programacion movil\core\network\src\main\AndroidManifest.xml:2:1-4:12
+INJECTED from D:\Documents\Semestre 8\Programacion de dispositivos moviles\Programacion movil\core\network\src\main\AndroidManifest.xml:2:1-4:12
+	package
+		INJECTED from D:\Documents\Semestre 8\Programacion de dispositivos moviles\Programacion movil\core\network\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\Documents\Semestre 8\Programacion de dispositivos moviles\Programacion movil\core\network\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from D:\Documents\Semestre 8\Programacion de dispositivos moviles\Programacion movil\core\network\src\main\AndroidManifest.xml:3:5-66
+	android:name
+		ADDED from D:\Documents\Semestre 8\Programacion de dispositivos moviles\Programacion movil\core\network\src\main\AndroidManifest.xml:3:22-64
+uses-sdk
+INJECTED from D:\Documents\Semestre 8\Programacion de dispositivos moviles\Programacion movil\core\network\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Documents\Semestre 8\Programacion de dispositivos moviles\Programacion movil\core\network\src\main\AndroidManifest.xml
+INJECTED from D:\Documents\Semestre 8\Programacion de dispositivos moviles\Programacion movil\core\network\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\Documents\Semestre 8\Programacion de dispositivos moviles\Programacion movil\core\network\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\Documents\Semestre 8\Programacion de dispositivos moviles\Programacion movil\core\network\src\main\AndroidManifest.xml

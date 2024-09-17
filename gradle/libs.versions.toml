@@ -10,7 +10,7 @@ activityCompose = "1.9.1"
 composeBom = "2023.08.00"
 androidTools = "31.5.2"
 appcompat = "1.6.1"
-material = "1.10.0"
+material = "1.12.0"
 retrofit="2.11.0"
 glide="4.16.0"
 hilt="2.52"
@@ -19,6 +19,9 @@ ktlint = "12.1.1"
 font="1.7.1"
 detekt = "1.23.3"
 jetbrainsKotlinJvm = "1.9.0"
+moshi = "1.15.1"
+retrofitCoroutines = "0.9.2"
+coil = "2.7.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -46,6 +49,11 @@ kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-pl
 android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+moshi = { group="com.squareup.moshi", name="moshi", version.ref="moshi"}
+moshi-kapt = { group="com.squareup.moshi", name="moshi-kotlin-codegen", version.ref="moshi"}
+converter-moshi ={ group="com.squareup.retrofit2", name="converter-moshi", version.ref="retrofit"}
+retrofit-coroutines = { group="com.jakewharton.retrofit", name="retrofit2-kotlin-coroutines-adapter", version.ref="retrofitCoroutines"}
+coil={ group="io.coil-kt", name="coil-compose", version.ref="coil"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
