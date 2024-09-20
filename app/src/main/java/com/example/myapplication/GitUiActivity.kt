@@ -37,6 +37,9 @@ import kotlinx.coroutines.launch
 class GitUiActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val context = applicationContext
+
+        val name = intent.extras?.getString("name")
+        Toast.makeText(context, name, Toast.LENGTH_LONG).show()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
