@@ -13,6 +13,17 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".CardActivity"
+            android:exported="true"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.MyApplication">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".GitUiActivity"
             android:exported="true"
             android:label="@string/title_activity_git_ui"
