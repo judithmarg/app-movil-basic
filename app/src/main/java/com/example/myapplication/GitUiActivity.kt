@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -38,8 +39,8 @@ class GitUiActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val context = applicationContext
 
-        val name = intent.extras?.getString("name")
-        Toast.makeText(context, name, Toast.LENGTH_LONG).show()
+        //val name = intent.extras?.getString("name")
+        //Toast.makeText(context, name, Toast.LENGTH_LONG).show()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
@@ -61,6 +62,8 @@ fun GitUi(modifier: Modifier = Modifier, context:Context) {
     var name by remember { mutableStateOf("") }
     var company by remember { mutableStateOf("") }
     var bio by remember { mutableStateOf("") }
+
+    val list = UserRepository().getList()
 
     Column(
         modifier = modifier
@@ -92,6 +95,17 @@ fun GitUi(modifier: Modifier = Modifier, context:Context) {
         }) {
             Text(text = stringResource(id = R.string.github_ui_button))
         }
+        LazyRow {
+            items(list.size){
+                Button(onClick = {
+                    userId = list[it].username
+                }) {
+                    Text(text = list[it].username)
+                }
+        }
+            
+        }
+        
         AsyncImage(
             model = urlImage,
             contentDescription = null
