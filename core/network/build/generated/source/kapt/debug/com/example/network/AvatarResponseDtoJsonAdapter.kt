@@ -26,6 +26,9 @@ public class AvatarResponseDtoJsonAdapter(
   private val stringAdapter: JsonAdapter<String> = moshi.adapter(String::class.java, emptySet(),
       "login")
 
+  private val nullableStringAdapter: JsonAdapter<String?> = moshi.adapter(String::class.java,
+      emptySet(), "name")
+
   public override fun toString(): String = buildString(39) {
       append("GeneratedJsonAdapter(").append("AvatarResponseDto").append(')') }
 
@@ -42,11 +45,9 @@ public class AvatarResponseDtoJsonAdapter(
             reader)
         1 -> url = stringAdapter.fromJson(reader) ?: throw Util.unexpectedNull("url", "avatar_url",
             reader)
-        2 -> name = stringAdapter.fromJson(reader) ?: throw Util.unexpectedNull("name", "name",
-            reader)
-        3 -> company = stringAdapter.fromJson(reader) ?: throw Util.unexpectedNull("company",
-            "company", reader)
-        4 -> bio = stringAdapter.fromJson(reader) ?: throw Util.unexpectedNull("bio", "bio", reader)
+        2 -> name = nullableStringAdapter.fromJson(reader)
+        3 -> company = nullableStringAdapter.fromJson(reader)
+        4 -> bio = nullableStringAdapter.fromJson(reader)
         -1 -> {
           // Unknown name, skip it.
           reader.skipName()
@@ -58,9 +59,9 @@ public class AvatarResponseDtoJsonAdapter(
     return AvatarResponseDto(
         login = login ?: throw Util.missingProperty("login", "login", reader),
         url = url ?: throw Util.missingProperty("url", "avatar_url", reader),
-        name = name ?: throw Util.missingProperty("name", "name", reader),
-        company = company ?: throw Util.missingProperty("company", "company", reader),
-        bio = bio ?: throw Util.missingProperty("bio", "bio", reader)
+        name = name,
+        company = company,
+        bio = bio
     )
   }
 
@@ -74,11 +75,11 @@ public class AvatarResponseDtoJsonAdapter(
     writer.name("avatar_url")
     stringAdapter.toJson(writer, value_.url)
     writer.name("name")
-    stringAdapter.toJson(writer, value_.name)
+    nullableStringAdapter.toJson(writer, value_.name)
     writer.name("company")
-    stringAdapter.toJson(writer, value_.company)
+    nullableStringAdapter.toJson(writer, value_.company)
     writer.name("bio")
-    stringAdapter.toJson(writer, value_.bio)
+    nullableStringAdapter.toJson(writer, value_.bio)
     writer.endObject()
   }
 }

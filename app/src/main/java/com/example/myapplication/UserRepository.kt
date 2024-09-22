@@ -7,37 +7,20 @@ class UserRepository {
             UserModel("JakeWharton"),
             UserModel("unclebob"),
             UserModel("retomeier"),
-            UserModel(
-                "chiuki"
-            ), UserModel(
-                "kaushikgopal"
-            ), UserModel(
-                "donnfelker"
-            ), UserModel(
-                "jskeet"
-            ), UserModel(
-                "chrisbanes"
-            ), UserModel(
-                "OjasviBhargava"
-            ), UserModel(
-                "binaryshrey"
-            ), UserModel(
-                "androiddevnotes"
-            ), UserModel(
-                "douglascrockford"
-            ), UserModel(
-                "tu propio usuario de github"
-            ), UserModel(
-                "coding-horror"
-            ), UserModel(
-                "koush"
-            ), UserModel(
-                "romannurik"
-            ), UserModel(
-                "PareshMayani"
-            ), UserModel(
-                "commonsguy"
-            ),
+            UserModel("chiuki"),
+            UserModel("kaushikgopal"),
+            UserModel("donnfelker"),
+            UserModel("jskeet"),
+            UserModel("chrisbanes"),
+            UserModel("OjasviBhargava"),
+            UserModel("binaryshrey"),
+            UserModel("androiddevnotes"),
+            UserModel("douglascrockford"),
+            UserModel("judithmarg"),
+            UserModel("koush"),
+            UserModel("romannurik"),
+            UserModel("PareshMayani"),
+            UserModel("commonsguy"),
             UserModel("codigo-horror")
         )
     }

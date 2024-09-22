@@ -10,10 +10,10 @@ class AvatarResponseDto (
     @Json(name = "avatar_url")
     val url: String,
     @Json(name = "name")
-    val name: String,
+    val name: String?,
     @Json(name = "company")
-    val company: String,
+    val company: String?,
     @Json(name = "bio")
-    val bio: String
+    val bio: String?
 ){
 }

@@ -34,6 +34,7 @@ import com.example.network.RetrofitBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class GitUiActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,11 +87,19 @@ fun GitUi(modifier: Modifier = Modifier, context:Context) {
         Button(onClick = {
             val show = Toast.makeText(context, userId, Toast.LENGTH_LONG).show()
             CoroutineScope(Dispatchers.IO).launch {
-                val response = dataSource.getAvatarInfo(userId)
-                urlImage = response.url
-                name = response.name
-                company = response.company
-                bio = response.bio
+                try {
+                    val response = dataSource.getAvatarInfo(userId)
+                    withContext(Dispatchers.Main) {
+                        urlImage = response.url
+                        name = response.name?: "Without name"
+                        company = response.company ?: "Without company"
+                        bio = response.bio ?: "Without bio"
+                    }
+                }catch (e:Exception) {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(context, "Fai$e", Toast.LENGTH_LONG).show()
+                    }
+                }
             }
         }) {
             Text(text = stringResource(id = R.string.github_ui_button))
@@ -116,19 +125,3 @@ fun GitUi(modifier: Modifier = Modifier, context:Context) {
         }
     }
 
-
-@Composable
-fun Greeting2(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview2() {
-    AppTheme {
-        Greeting2("Android")
-    }
-}
