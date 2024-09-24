@@ -15,7 +15,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -42,7 +41,7 @@ class LayoutCounterActivity : ComponentActivity() {
 @Composable
 fun Ordering(modifier: Modifier = Modifier) {
     var count by remember { mutableIntStateOf(0) }
-    var basePrice = 100
+    val basePrice = 100
     var price by remember { mutableIntStateOf(0) }
     Column (
         modifier = modifier
