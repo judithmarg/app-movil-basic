@@ -16,12 +16,17 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.myapplication.ui.theme.AppTheme
+import kotlin.random.Random
 
 class CourCounterActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +46,8 @@ class CourCounterActivity : ComponentActivity() {
 
 @Composable
 fun CounterAll(modifier: Modifier) {
+    var numInitA by remember { mutableIntStateOf(0) }
+    var numInitB by remember { mutableIntStateOf(0) }
     Column (modifier=modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Row (
             modifier = modifier
@@ -48,40 +55,42 @@ fun CounterAll(modifier: Modifier) {
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ){
-            Counter(modifier)
-            Counter(modifier)
+            Counter(modifier, numInitA, "Team A", onChange = {numInitA = it})
+            Counter(modifier, numInitB, "Team B", onChange = {numInitB = it})
         }
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = { numInitA=0; numInitB=0 }) {
             Text(text = "RESET")
         }
     }
 }
 
 @Composable
-fun Counter(modifier: Modifier) {
+fun Counter(modifier: Modifier, lastNumber: Int, teamName: String, onChange : (Int) -> Unit) {
     Column (
         modifier = modifier
             .padding(10.dp)
             .width(IntrinsicSize.Max)
     ){
-        Text(text = "Team A", textAlign = TextAlign.Center, modifier=Modifier.fillMaxWidth())
-        Text(text = "0",
+        Text(text = teamName, textAlign = TextAlign.Center, modifier=Modifier.fillMaxWidth())
+        Text(text = "$lastNumber",
             textAlign = TextAlign.Center,
-            fontSize = 80.sp,
-            modifier=Modifier.fillMaxWidth().padding(vertical = 40.dp))
-        Button(onClick = { /*TODO*/ },
+            fontSize = 60.sp,
+            modifier= Modifier
+                .fillMaxWidth()
+                .padding(vertical = 40.dp))
+        Button(onClick = { onChange(lastNumber + 3) },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 4.dp)) {
             Text(text = "+3 POINTS")
         }
-        Button(onClick = { /*TODO*/ },
+        Button(onClick = { onChange(lastNumber + 2) },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 4.dp)) {
             Text(text = "+2 POINTS")
         }
-        Button(onClick = { /*TODO*/ },
+        Button(onClick = { onChange(lastNumber + Random.nextInt(0,20)) },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 4.dp)) {

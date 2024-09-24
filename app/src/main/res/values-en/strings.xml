@@ -6,5 +6,8 @@
         <string name="title_activity_git_ui">GitUiActivity</string>
         <string name="github_ui_title">Enter user github </string>
         <string name="github_ui_button">Search</string>
-
+        <string name="title_activity_main2">MainActivity2</string>
+        <string name="title_activity_vocabulary">VocabularyActivity</string>
+        <string name="title_activity_layout_counter">LayoutCounterActivity</string>
+        <string name="title_activity_cour_counter">CourCounterActivity</string>
 </resources>
