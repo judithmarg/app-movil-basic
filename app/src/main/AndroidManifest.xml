@@ -13,6 +13,17 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".FlowActivity"
+            android:exported="true"
+            android:label="@string/title_activity_flow"
+            android:theme="@style/Theme.MyApplication">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".CourCounterActivity"
             android:exported="true"
             android:label="@string/title_activity_cour_counter"
@@ -38,26 +49,22 @@
             android:name=".GitUiActivity"
             android:exported="true"
             android:label="@string/title_activity_git_ui"
-            android:theme="@style/Theme.MyApplication">
-        </activity>
+            android:theme="@style/Theme.MyApplication"></activity>
         <activity
             android:name=".VocabularyActivity"
             android:exported="true"
             android:label="@string/title_activity_vocabulary"
-            android:theme="@style/Theme.MyApplication">
-        </activity>
+            android:theme="@style/Theme.MyApplication"></activity>
         <activity
             android:name=".CardActivity"
             android:exported="true"
             android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.MyApplication">
-        </activity>
+            android:theme="@style/Theme.MyApplication"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="ucbapp"
-            android:theme="@style/Theme.MyApplication">
-        </activity> <!-- Required: set your sentry.io project identifier (DSN) -->
+            android:theme="@style/Theme.MyApplication"></activity> <!-- Required: set your sentry.io project identifier (DSN) -->
         <meta-data
             android:name="io.sentry.dsn"
             android:value="https://1220ffc846cae7becc37d834aeb0f684@o4507825193615360.ingest.us.sentry.io/4507829520236545" /> <!-- enable automatic breadcrumbs for user interactions (clicks, swipes, scrolls) -->

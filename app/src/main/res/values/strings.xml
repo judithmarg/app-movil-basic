@@ -9,4 +9,5 @@
     <string name="title_activity_vocabulary">VocabularioActivity</string>
     <string name="title_activity_layout_counter">LayoutCounterActivity</string>
     <string name="title_activity_cour_counter">CourCounterActivity</string>
+    <string name="title_activity_flow">FlowActivity</string>
 </resources>
