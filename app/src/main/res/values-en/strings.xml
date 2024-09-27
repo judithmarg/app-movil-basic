@@ -10,4 +10,10 @@
         <string name="title_activity_vocabulary">VocabularyActivity</string>
         <string name="title_activity_layout_counter">LayoutCounterActivity</string>
         <string name="title_activity_cour_counter">CourCounterActivity</string>
+        <string name="title_activity_flow">FlowActivity</string>
+        <string name="title_activity_background_color">BackgroundColorActivity</string>
+        <string name="btn_yellow">Yellow</string>
+        <string name="btn_blue">Blue</string>
+        <string name="title_activity_business">BusinessActivity</string>
+    <string name="business_title">My business app</string>
 </resources>
