@@ -17,4 +17,5 @@
     <string name="business_title">Mi aplicacion de negocios</string>
     <string name="title_activity_even_odd">EvenOddActivity</string>
     <string name="title_activity_beauty">BeautyActivity</string>
+    <string name="title_activity_scaffold">ScaffoldActivity</string>
 </resources>
