@@ -29,13 +29,13 @@ class BusinessActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AppTheme {
-                businessUI()
+                BusinessUI()
             }
         }
     }
 
     @Composable
-    fun businessUI() {
+    fun BusinessUI() {
         var buttonName by remember { mutableStateOf("") }
         Scaffold (
             modifier = Modifier.fillMaxSize()
