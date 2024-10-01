@@ -30,6 +30,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import com.example.myapplication.ui.theme.AppTheme
+import com.example.myapplication.ui.theme.onPrimaryContainerLight
+import com.example.myapplication.ui.theme.primaryLight
 
 class BeautyActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,8 +55,8 @@ fun BeautyComp() {
             TopAppBar(
                 modifier = Modifier.fillMaxWidth(),
                 colors = topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary
+                    containerColor = onPrimaryContainerLight,
+                    titleContentColor = primaryLight
                 ),
                 title = {
                     Box(
