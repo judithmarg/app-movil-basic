@@ -89,6 +89,7 @@ dependencies {
     implementation(libs.androidx.ui.font)
     implementation(libs.coil)
     implementation(project(":core:network"))
+
 }
 
 kapt {

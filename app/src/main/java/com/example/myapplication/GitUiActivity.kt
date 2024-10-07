@@ -97,7 +97,7 @@ fun GitUi(modifier: Modifier = Modifier, context:Context) {
                     }
                 }catch (e:Exception) {
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(context, "Fai$e", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "False", Toast.LENGTH_LONG).show()
                     }
                 }
             }
