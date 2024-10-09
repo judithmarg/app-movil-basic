@@ -19,4 +19,5 @@
     <string name="title_activity_beauty">BeautyActivity</string>
     <string name="title_activity_scaffold">ScaffoldActivity</string>
     <string name="title_activity_challenge">ChallengeActivity</string>
+    <string name="title_activity_book">BookActivity</string>
 </resources>
