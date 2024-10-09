@@ -9,7 +9,7 @@ import androidx.room.Query
 interface IUserDao {
 //    @Query("SELECT * FROM user")
 //    fun getAll() : List<User>
-//
+// extra es esto
 //    @Query("SELECT * FROM user WHERE uid IN (:userIds)")
 //    fun loadAllByIds(userIds: IntArray):List<User>
 //
