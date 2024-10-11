@@ -1,12 +1,12 @@
 package com.example.myapplication
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,6 +22,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.filled.Star
@@ -32,17 +33,17 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.myapplication.ui.theme.AppTheme
-import com.example.myapplication.ui.theme.errorDark
-import com.example.myapplication.ui.theme.errorLight
 import com.example.myapplication.ui.theme.onPrimaryLight
 import com.example.myapplication.ui.theme.secondaryContainerLight
 import com.example.myapplication.ui.theme.tertiaryLight
@@ -61,7 +62,7 @@ class PracticingActivity : ComponentActivity() {
                         points = "8.1/10",
                         descrip = "Gracias a un descubrimiento, un grupo de cientificos y " +
                                 "exploradores, encabezadis por Cooper, se embarcan en un viaje " +
-                                "espacial para encontrar un lugar conn las condiciones necesarias" +
+                                "espacial para encontrar un lugar con las condiciones necesarias" +
                                 "para reemplazar a la Tierra y comenzar una nueva vida alli.",
                         modifier = Modifier.padding(innerPadding)
                     )
@@ -74,7 +75,8 @@ class PracticingActivity : ComponentActivity() {
 @Composable
 fun MovieScreen(name: String, image: String, subtitle: String, points:String, descrip: String, modifier: Modifier = Modifier) {
     val movieImage = image
-    val rating = 4.5
+    var iconSelect by remember { mutableStateOf(false) }
+    var rating by remember { mutableStateOf(0) }
 
     Box(modifier = modifier
         .padding(horizontal = 26.dp, vertical = 30.dp)
@@ -103,17 +105,19 @@ fun MovieScreen(name: String, image: String, subtitle: String, points:String, de
                 text = name,
                 style = MaterialTheme.typography.headlineSmall
             )
-            Icon(
-                imageVector = Icons.Default.FavoriteBorder,
-                contentDescription = "Favoritos",
-                modifier = Modifier.size(34.dp),
-                tint = onPrimaryLight
-            )
+            Button(onClick = { iconSelect = !iconSelect}) {
+                Icon(
+                    imageVector = if (iconSelect) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                    contentDescription = "Favoritos",
+                    modifier = Modifier.size(34.dp),
+                    tint = onPrimaryLight
+                )
+            }
         }
 
         Row(
-                modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
                 text = subtitle,
@@ -132,9 +136,9 @@ fun MovieScreen(name: String, image: String, subtitle: String, points:String, de
         ) {
             RatingBar(
                 rating = rating,
-                modifier = Modifier
-                    .width(100.dp)
-                    .height(20.dp)
+                onRatingChanged = { newRating ->
+                    rating = newRating
+                }
             )
             Button(onClick = { /*TODO*/ },
                 modifier = Modifier
@@ -156,26 +160,29 @@ fun MovieScreen(name: String, image: String, subtitle: String, points:String, de
 
 @Composable
 fun RatingBar(
-    rating: Double,
     modifier: Modifier = Modifier,
-    ratingCount: Int = 5,
-    ratingSpacing: Dp = 4.dp,
-    ratingColor: androidx.compose.ui.graphics.Color = errorLight,
-    ratingColorEmpty: androidx.compose.ui.graphics.Color = errorDark
+    rating: Int = 0,
+    onRatingChanged: (Int) -> Unit
 ) {
+    var currentRating by remember { mutableStateOf(rating) }
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        for (i in 1..ratingCount) {
+        for (i in 1..5) {
             Icon(
-                imageVector = if (i <= rating) {
+                imageVector = if (i <= currentRating) {
                     Icons.Filled.Star
                 } else {
                     Icons.Outlined.Star },
                 contentDescription = "Rating",
-                tint = if (i <= rating) ratingColor else ratingColorEmpty,
-                modifier = Modifier.padding(end = ratingSpacing)
+                modifier = Modifier
+                    .size(30.dp)
+                    .clickable {
+                        currentRating = i
+                        onRatingChanged(i)
+                    },
+                tint = if (i <= currentRating) androidx.compose.ui.graphics.Color.Yellow else androidx.compose.ui.graphics.Color.Gray,
             )
         }
     }
