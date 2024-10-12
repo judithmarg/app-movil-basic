@@ -5,7 +5,7 @@
 5    <uses-sdk android:minSdkVersion="24" />
 6
 7    <uses-permission android:name="android.permission.INTERNET" />
-7-->D:\Documents\Semestre 8\Programacion de dispositivos moviles\Programacion movil\core\network\src\main\AndroidManifest.xml:3:5-66
-7-->D:\Documents\Semestre 8\Programacion de dispositivos moviles\Programacion movil\core\network\src\main\AndroidManifest.xml:3:22-64
+7-->/Users/estudiante/AndroidStudioProjects/app-movil-basic/core/network/src/main/AndroidManifest.xml:3:5-66
+7-->/Users/estudiante/AndroidStudioProjects/app-movil-basic/core/network/src/main/AndroidManifest.xml:3:22-64
 8
 9</manifest>

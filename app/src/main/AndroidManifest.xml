@@ -13,15 +13,16 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".Counter"
+            android:exported="true"
+            android:label="@string/title_activity_counter"
+            android:theme="@style/Theme.MyApplication">
+        </activity>
+        <activity
             android:name=".PracticingActivity"
             android:exported="true"
             android:label="@string/title_activity_practicing"
             android:theme="@style/Theme.MyApplication">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".BookActivity"
@@ -39,22 +40,12 @@
             android:exported="true"
             android:label="@string/title_activity_challenge"
             android:theme="@style/Theme.MyApplication">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ScaffoldActivity"
             android:exported="true"
             android:label="@string/title_activity_scaffold"
             android:theme="@style/Theme.MyApplication">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".BeautyActivity"

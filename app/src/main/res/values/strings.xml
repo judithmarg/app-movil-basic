@@ -21,4 +21,6 @@
     <string name="title_activity_challenge">ChallengeActivity</string>
     <string name="title_activity_book">BookActivity</string>
     <string name="title_activity_practicing">PracticingActivity</string>
+    <string name="title_activity_counter">Counter</string>
+    <string name="btn_increment">Incrementar</string>
 </resources>

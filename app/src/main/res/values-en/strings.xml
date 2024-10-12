@@ -16,4 +16,5 @@
         <string name="btn_blue">Blue</string>
         <string name="title_activity_business">BusinessActivity</string>
     <string name="business_title">My business app</string>
+        <string name="btn_increment">Increment</string>
 </resources>
