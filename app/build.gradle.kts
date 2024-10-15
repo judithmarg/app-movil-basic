@@ -90,7 +90,7 @@ dependencies {
     implementation(libs.coil)
     implementation(project(":core:network"))
     implementation(project(":core:data"))
-
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 }
 
 kapt {

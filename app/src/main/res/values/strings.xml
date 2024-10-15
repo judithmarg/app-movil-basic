@@ -23,4 +23,5 @@
     <string name="title_activity_practicing">PracticingActivity</string>
     <string name="title_activity_counter">Counter</string>
     <string name="btn_increment">Incrementar</string>
+    <string name="title_activity_login">LoginActivity</string>
 </resources>
