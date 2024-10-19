@@ -5,7 +5,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 interface ICatDao {
-    @Query("SELECT * FROM cats_table")
+    @Query("SELECT * FROM cat_table")
     fun getList():List<Cat>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
