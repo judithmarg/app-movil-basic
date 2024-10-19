@@ -24,4 +24,5 @@
     <string name="title_activity_counter">Counter</string>
     <string name="btn_increment">Incrementar</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_cat">CatActivity</string>
 </resources>

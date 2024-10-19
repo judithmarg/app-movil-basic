@@ -11,6 +11,8 @@ abstract class AppRoomDatabase : RoomDatabase() {
 
     abstract fun userDao(): IUserDao
 
+    abstract fun catDao(): ICatDao
+
     companion object {
         @Volatile
         private var Instance:AppRoomDatabase? = null
