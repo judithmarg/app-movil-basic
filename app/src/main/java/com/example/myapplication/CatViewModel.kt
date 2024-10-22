@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel
 import com.example.data.Cat
 import com.example.data.CatRepository
 import com.example.network.CatResponseDto
+import com.example.network.CataasLocalDataSource
 import com.example.network.CataasRemoteDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -49,11 +50,13 @@ class CatViewModel: ViewModel() {
 
             } catch (e: Exception) {
                 Log.e("hola", "error")
+//                var localSource = CataasLocalDataSource(repository)
+//                withContext(Dispatchers.Main) {
+//                    _list.value = localSource.getCatResponse()
+//                }
+
             }
-//            val listOfficial = repository.getListCats()
-//            withContext(Dispatchers.Main) {
-//                _list.value = listOfficial
-//            }
         }
+
     }
 }

@@ -12,6 +12,7 @@ dependencies {
     implementation(libs.myretrofit)
     implementation(libs.moshi)
     implementation(libs.converter.moshi)
+    implementation(project(":core:data"))
     kapt(libs.moshi.kapt)
 }
 
