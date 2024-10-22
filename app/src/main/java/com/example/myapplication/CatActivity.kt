@@ -6,12 +6,17 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.gestures.rememberScrollableState
+import androidx.compose.foundation.gestures.scrollable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -25,6 +30,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.Observer
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.viewmodel.compose.viewModel
+import coil.compose.AsyncImage
+import com.example.data.Cat
 import com.example.myapplication.ui.theme.AppTheme
 import com.example.network.CatResponseDto
 import com.example.network.CataasRemoteDataSource
@@ -56,22 +66,28 @@ class CatActivity : ComponentActivity() {
 fun Greeting3(name: String, modifier: Modifier = Modifier) {
     val dataSource: CataasRemoteDataSource = CataasRemoteDataSource(RetrofitBuilder2)
     val context = LocalContext.current
-    val cats = remember{ mutableStateOf<List<CatResponseDto>>(emptyList()) }
-    LaunchedEffect(Unit){
-        try{
-            val response = dataSource.getCatResponse()
-            cats.value=response
+    val lifecycle = LocalLifecycleOwner.current
+    var cats by remember{ mutableStateOf(listOf<CatResponseDto>()) }
+    val catViewModel : CatViewModel = viewModel()
 
-        }catch(e: Exception){
-            Log.e("hola", "error")
-        }
+    fun updateUI(gatos: List<CatResponseDto>) {
+        cats = gatos
     }
+    catViewModel.listInternet.observe(lifecycle, Observer(::updateUI))
+    catViewModel.getAllCats(dataSource, context)
     FlowRow(
-        modifier=Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
+        horizontalArrangement = Arrangement.Center
     ) {
-        cats.value.forEach{
+        cats.forEach{
             cat ->
             Text(text = cat._id)
+            AsyncImage(
+                model = "https://cataas.com/cat/"+cat._id,
+                contentDescription = null
+            )
         }
     }
 }

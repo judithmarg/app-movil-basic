@@ -9,7 +9,13 @@ class CatRepository(val context: Context) {
         catDao.insert(cat)
     }
 
-    fun getListBooks(): List<Cat> {
+    fun getListCats(): List<Cat> {
         return catDao.getList()
+    }
+
+    suspend fun insertAll(cats: List<Cat>) {
+        for (kitten in cats) {
+            this.insert(kitten)
+        }
     }
 }

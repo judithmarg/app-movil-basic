@@ -4,7 +4,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "com.example.myapplication"
+group = "com.example.buildlogic"
 
 java{
     sourceCompatibility = JavaVersion.VERSION_17
