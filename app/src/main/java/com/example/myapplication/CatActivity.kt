@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -50,12 +51,7 @@ class CatActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting3(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                    CatContentUI()
             }
         }
     }
@@ -63,31 +59,72 @@ class CatActivity : ComponentActivity() {
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun Greeting3(name: String, modifier: Modifier = Modifier) {
-    val dataSource: CataasRemoteDataSource = CataasRemoteDataSource(RetrofitBuilder2)
+fun CatContentUI() {
+//    val dataSource: CataasRemoteDataSource = CataasRemoteDataSource(RetrofitBuilder2)
+//    val context = LocalContext.current
+//    val lifecycle = LocalLifecycleOwner.current
+//    var cats by remember{ mutableStateOf(listOf<CatResponseDto>()) }
+//    val catViewModel : CatViewModel = viewModel()
+//
+//    fun updateUI(gatos: List<CatResponseDto>) {
+//        cats = gatos
+//    }
+//    catViewModel.listInternet.observe(lifecycle, Observer(::updateUI))
+//    catViewModel.getAllCats(dataSource, context)
+//
     val context = LocalContext.current
-    val lifecycle = LocalLifecycleOwner.current
-    var cats by remember{ mutableStateOf(listOf<CatResponseDto>()) }
-    val catViewModel : CatViewModel = viewModel()
-
-    fun updateUI(gatos: List<CatResponseDto>) {
-        cats = gatos
-    }
-    catViewModel.listInternet.observe(lifecycle, Observer(::updateUI))
-    catViewModel.getAllCats(dataSource, context)
-    FlowRow(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState()),
-        horizontalArrangement = Arrangement.Center
-    ) {
-        cats.forEach{
-            cat ->
-            Text(text = cat._id)
-            AsyncImage(
-                model = "https://cataas.com/cat/"+cat._id,
-                contentDescription = null
-            )
+    var list by remember { mutableStateOf(listOf<Cat>()) }
+    val catViewModel = CatViewModel()
+    catViewModel.fetchData(context)
+    fun updateUI(catStateUI: CatViewModel.CatStateUI) {
+        when(catStateUI){
+            is CatViewModel.CatStateUI.Loading -> {
+                Toast.makeText(
+                    context,
+                    "Loading",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+            is CatViewModel.CatStateUI.Error -> {
+                Toast.makeText(
+                    context,
+                    catStateUI.message,
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+            is CatViewModel.CatStateUI.Successful -> {
+                list = catStateUI.list
+            }
+            is CatViewModel.CatStateUI.InternetConexion -> {
+                //aqui definimos que fallo el internet
+            }
         }
     }
+    catViewModel.state.observe(
+        LocalLifecycleOwner.current,
+        Observer(::updateUI)
+    )
+    Scaffold {
+        paddingValues ->
+        LazyColumn(modifier = Modifier.padding(paddingValues)){
+            items(list.size)  {
+                Text(text = list[it].id_image)
+            }
+        }
+    }
+//    FlowRow(
+//        modifier = Modifier
+//            .fillMaxSize()
+//            .verticalScroll(rememberScrollState()),
+//        horizontalArrangement = Arrangement.Center
+//    ) {
+//        cats.forEach{
+//            cat ->
+//            Text(text = cat._id)
+//            AsyncImage(
+//                model = "https://cataas.com/cat/"+cat._id,
+//                contentDescription = null
+//            )
+//        }
+//    }
 }

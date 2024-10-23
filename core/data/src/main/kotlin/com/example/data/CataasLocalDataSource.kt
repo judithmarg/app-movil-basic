@@ -1,7 +1,4 @@
-package com.example.network
-
-import com.example.data.Cat
-import com.example.data.CatRepository
+package com.example.data
 
 class CataasLocalDataSource (
     val catRepository: CatRepository

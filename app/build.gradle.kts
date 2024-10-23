@@ -90,6 +90,7 @@ dependencies {
     implementation(libs.coil)
     implementation(project(":core:network"))
     implementation(project(":core:data"))
+    implementation(project(":core:repository"))
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 }
 
