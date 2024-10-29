@@ -25,4 +25,7 @@
     <string name="btn_increment">Incrementar</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_cat">CatActivity</string>
+    <string name="title_activity_internet_connect">InternetConnectActivity</string>
+    <string name="title_activity_internet">InternetActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
 </resources>

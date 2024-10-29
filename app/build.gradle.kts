@@ -3,8 +3,8 @@ import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.kapt)
-    alias(libs.plugins.hilt)
+    //alias(libs.plugins.kapt)
+    //alias(libs.plugins.hilt)
     alias(libs.plugins.sentry)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.detetkt)
@@ -58,15 +58,15 @@ android {
 
 dependencies {
 
-    implementation(libs.hilt)
+//    implementation(libs.hilt)
     //implementation(libs.androidx.material3.android)
-    kapt(libs.hilt.compiler)
+    //kapt(libs.hilt.compiler)
     // For instrumentation test
-    androidTestImplementation(libs.hilt.test)
-    kaptAndroidTest(libs.hilt.compiler)
+    //androidTestImplementation(libs.hilt.test)
+    //kaptAndroidTest(libs.hilt.compiler)
     // For local unit tests
-    testImplementation(libs.hilt.test)
-    kaptTest(libs.hilt.compiler)
+    //testImplementation(libs.hilt.test)
+    //kaptTest(libs.hilt.compiler)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -91,12 +91,13 @@ dependencies {
     implementation(project(":core:network"))
     implementation(project(":core:data"))
     implementation(project(":core:repository"))
+    implementation(project(":core:model"))
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 }
 
-kapt {
-    correctErrorTypes = true
-}
+//kapt {
+//    correctErrorTypes = true
+//}
 
 ktlint {
     android = true

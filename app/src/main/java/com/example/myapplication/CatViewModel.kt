@@ -61,14 +61,14 @@ class CatViewModel: ViewModel() {
         object InternetConexion: CatStateUI()
     }
 
-    private val catRepository = com.example.repository.CatRepository()
+    //private val catRepository = CatRepository(data)
     fun fetchData(context: Context){
         if(!isConexion(context)) {
             _state.value = CatStateUI.Error("no tiene conexion a internet")
         } else {
             _state.value = CatStateUI.Loading
-            val list = catRepository.fetchData()
-            _state.value = CatStateUI.Successful(list)
+            //val list = catRepository.fetchData()
+            //_state.value = CatStateUI.Successful(list)
         }
 
     }

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,6 +14,39 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
+        <activity
+            android:name=".cataas.HomeActivity"
+            android:exported="true"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.MyApplication">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".internetconnectionmvvm.InternetActivity"
+            android:exported="true"
+            android:label="@string/title_activity_internet"
+            android:theme="@style/Theme.MyApplication">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".internetconnect.InternetConnectActivity"
+            android:exported="true"
+            android:label="@string/title_activity_internet_connect"
+            android:theme="@style/Theme.MyApplication">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".CatActivity"
             android:exported="true"
@@ -27,8 +62,7 @@
             android:name=".login.LoginActivity"
             android:exported="true"
             android:label="@string/title_activity_login"
-            android:theme="@style/Theme.MyApplication">
-        </activity>
+            android:theme="@style/Theme.MyApplication" />
         <activity
             android:name=".Counter"
             android:exported="true"
@@ -43,8 +77,7 @@
             android:name=".BookActivity"
             android:exported="true"
             android:label="@string/title_activity_book"
-            android:theme="@style/Theme.MyApplication">
-        </activity>
+            android:theme="@style/Theme.MyApplication" />
         <activity
             android:name=".ChallengeActivity"
             android:exported="true"
@@ -59,44 +92,37 @@
             android:name=".BeautyActivity"
             android:exported="true"
             android:label="@string/title_activity_beauty"
-            android:theme="@style/Theme.MyApplication">
-        </activity>
+            android:theme="@style/Theme.MyApplication" />
         <activity
             android:name=".EvenOddActivity"
             android:exported="true"
             android:label="@string/title_activity_even_odd"
-            android:theme="@style/Theme.MyApplication">
-        </activity>
+            android:theme="@style/Theme.MyApplication" />
         <activity
             android:name=".BusinessActivity"
             android:exported="true"
             android:label="@string/title_activity_business"
-            android:theme="@style/Theme.MyApplication">
-        </activity>
+            android:theme="@style/Theme.MyApplication" />
         <activity
             android:name=".BackgroundColorActivity"
             android:exported="true"
             android:label="@string/title_activity_background_color"
-            android:theme="@style/Theme.MyApplication">
-        </activity>
+            android:theme="@style/Theme.MyApplication" />
         <activity
             android:name=".FlowActivity"
             android:exported="true"
             android:label="@string/title_activity_flow"
-            android:theme="@style/Theme.MyApplication">
-        </activity>
+            android:theme="@style/Theme.MyApplication" />
         <activity
             android:name=".CourCounterActivity"
             android:exported="true"
             android:label="@string/title_activity_cour_counter"
-            android:theme="@style/Theme.MyApplication">
-        </activity>
+            android:theme="@style/Theme.MyApplication" />
         <activity
             android:name=".LayoutCounterActivity"
             android:exported="true"
             android:label="@string/title_activity_layout_counter"
-            android:theme="@style/Theme.MyApplication">
-        </activity>
+            android:theme="@style/Theme.MyApplication" />
         <activity
             android:name=".GitUiActivity"
             android:exported="true"
